@@ -21,11 +21,15 @@ app.use(
 	})
 )
 
-app.use(
-	cors({
-		origin:"https://social-media-application-task-frontend.onrender.com/",	
-	})
-)
+
+const corsOptions = {
+    origin: "https://social-media-application-task-frontend.onrender.com",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+
+};
+
+app.use(cors(corsOptions));
+
 
 // Routes
 app.use("/api/v1", userRoutes);
