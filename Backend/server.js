@@ -23,7 +23,7 @@ app.use(
 
 app.use(
 	cors({
-		origin:"http://localhost:3000",	
+		origin:"https://social-media-application-task-frontend.onrender.com/",	
 	})
 )
 
