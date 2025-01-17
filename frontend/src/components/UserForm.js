@@ -28,7 +28,7 @@ function UserForm() {
 
     try {
       setLoading(true);
-      const response = await fetch("https://social-media-application-task-backend.onrender.com", {
+      const response = await fetch("https://social-media-application-task-backend.onrender.com/api/v1/createUser", {
         method: "POST",
         body: form, // Send the FormData object
       });

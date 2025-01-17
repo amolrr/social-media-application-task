@@ -5,7 +5,7 @@ function AdminDashboard() {
 
   useEffect(() => {
     async function fetchUsers() {
-      const response = await fetch("https://social-media-application-task-backend.onrender.com");
+      const response = await fetch("https://social-media-application-task-backend.onrender.com/allData");
       const data = await response.json();
       setUsers(data.users);
     }
