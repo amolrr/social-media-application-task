@@ -38,16 +38,15 @@ const createUser = async(req, res) =>{
            const uploadedUrls = uploadedFiles.map(file => file.secure_url);
            console.log("Uploaded URLs:", uploadedUrls);
    
-        console.log("file uploded going for next step");
-
+        
         const user = await User.create({
             name,
             socialMediaHandle,
             images:uploadedUrls
         })
-        console.log("User data => ", user);
+       // console.log("User data => ", user);
 
-        console.log("User data =>", user);
+      //  console.log("User data =>", user);
         res.status(201).json({
             success:true,
             message:"Entry created successfully",
