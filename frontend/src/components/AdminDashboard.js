@@ -11,7 +11,7 @@ function AdminDashboard() {
     }
 
     fetchUsers();
-  }, []);
+  });
 
   return (
     <div className="p-4">
