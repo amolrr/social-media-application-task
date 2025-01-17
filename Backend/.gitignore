@@ -1,0 +1,8 @@
+# .gitignore file
+
+# Ignore the .env file which contains sensitive information
+.env
+
+# You can also add other directories or files you want to ignore
+node_modules/
+npm-debug.log
