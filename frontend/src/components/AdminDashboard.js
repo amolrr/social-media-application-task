@@ -16,12 +16,7 @@ function AdminDashboard() {
       console.error("Error fetching users:", error);
     }
   };
-
-  // Fetch users initially on component mount
-  useEffect(() => {
-    fetchUsers();
-  }, []); // Empty dependency array ensures this runs only once on mount
-
+  
   // Button click handler
   const handleOnClick = () => {
     fetchUsers();
@@ -31,7 +26,12 @@ function AdminDashboard() {
     <div className="p-4">
      
       <h1 className="text-3xl font-semibold mb-6">Admin Dashboard</h1>
-      <button onClick={handleOnClick()}>Get User Details</button>
+      <button
+        onClick={handleOnClick}
+        className="p-2 bg-blue-500 text-white rounded mb-4 hover:bg-blue-700 transition duration-300"
+      >
+        Get User Details
+      </button>
       { users.length > 0 ? (
         users.map((user) => (
           <div key={user._id} className="border border-gray-300 p-4 mb-4 rounded-lg flex flex-col">
