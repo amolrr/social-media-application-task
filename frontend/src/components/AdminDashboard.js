@@ -3,19 +3,30 @@ import React, { useEffect, useState } from 'react'
 function AdminDashboard() {
   const [users, setUsers] = useState([]);
   
-
-  const getUsers = useEffect(() => {
-    async function fetchUsers() {
+  const fetchUsers = async () => {
+    try {
       const response = await fetch("https://social-media-application-task-backend.onrender.com/api/v1/allData");
       const data = await response.json();
-      setUsers(data.users);
+      if (data.success) {
+        setUsers(data.users);
+      } else {
+        console.error("Failed to fetch users:", data.message);
+      }
+    } catch (error) {
+      console.error("Error fetching users:", error);
     }
-    fetchUsers();
-  });
+  };
 
+  // Fetch users initially on component mount
+  useEffect(() => {
+    fetchUsers();
+  }, []); // Empty dependency array ensures this runs only once on mount
+
+  // Button click handler
   const handleOnClick = () => {
-    getUsers();
-  }
+    fetchUsers();
+  };
+
   return (
     <div className="p-4">
      
