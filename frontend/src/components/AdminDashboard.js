@@ -1,29 +1,26 @@
 import React, { useEffect, useState } from 'react'
-import Spinner from './Spinner';
 
 function AdminDashboard() {
   const [users, setUsers] = useState([]);
-  const [loading, setLoading] = useState(false);
-  useEffect(() => {
-    setLoading(true);
+  
+
+  const getUsers = useEffect(() => {
     async function fetchUsers() {
       const response = await fetch("https://social-media-application-task-backend.onrender.com/api/v1/allData");
       const data = await response.json();
       setUsers(data.users);
     }
-
     fetchUsers();
-    setLoading(false);
   });
 
+  const handleOnClick = () => {
+    getUsers();
+  }
   return (
     <div className="p-4">
-      {loading && (
-        <div className="absolute top-0 left-0 w-full h-full bg-white bg-opacity-80 flex items-center justify-center z-10">
-          <Spinner />
-        </div>
-      )}
+     
       <h1 className="text-3xl font-semibold mb-6">Admin Dashboard</h1>
+      <button onClick={handleOnClick()}>Get User Details</button>
       { users.length > 0 ? (
         users.map((user) => (
           <div key={user._id} className="border border-gray-300 p-4 mb-4 rounded-lg flex flex-col">
